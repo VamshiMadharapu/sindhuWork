@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="21.099016">
+<testcase classname="Kiwisaver Calculator" name="Information Icon for Kiwisaver Retirement Calculator" time="21.099016">
+<failure message="java.lang.NullPointerException&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:559)&#10;&#9;at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)&#10;&#9;at com.sun.proxy.$Proxy19.click(Unknown Source)&#10;&#9;at stepdefs.StepDefinitions.user_is_displayed_with_information_icon_something(StepDefinitions.java:90)&#10;&#9;at ✽.Then User is displayed with Information icon &quot;This calculator has an age limit of 18 to 64 years old.&quot;(Login.feature:8)&#10;"><![CDATA[Given The website URL for Kiwisaver Retirement Calculator...................passed
+And User clicks on Kiwisaver Start button...................................passed
+Then User is displayed with Information icon "This calculator has an age limit of 18 to 64 years old.".failed
+
+StackTrace:
+java.lang.NullPointerException
+	at java.base/java.lang.reflect.Method.invoke(Method.java:559)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at com.sun.proxy.$Proxy19.click(Unknown Source)
+	at stepdefs.StepDefinitions.user_is_displayed_with_information_icon_something(StepDefinitions.java:90)
+	at ✽.Then User is displayed with Information icon "This calculator has an age limit of 18 to 64 years old."(Login.feature:8)
+]]></failure>
+</testcase>
+</testsuite>
