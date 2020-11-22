@@ -1,5 +1,7 @@
 package stepdefs;
 
+import com.gargoylesoftware.htmlunit.WebWindow;
+import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -7,7 +9,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import gherkin.lexer.Th;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -66,20 +67,23 @@ public class StepDefinitions {
 	public void user_navigates_to_the_kiwisaver_calculators() throws InterruptedException {
 		KiwiSaverPage kSaverPage = new KiwiSaverPage(driver);
 		kSaverPage.KiwiSaver.click();
-		kSaverPage.KiwiSaverCalculators.click();
-		Actions actions = new Actions(driver);
-		actions.moveToElement(kSaverPage.KiwiSaver).click();
+//		Actions actions = new Actions(driver);
+//		actions.moveToElement(kSaverPage.KiwiSaver).clickAndHold(kSaverPage.KiwiSaver).click(kSaverPage.KiwiSaverCalculators).build();
+//		actions.moveToElement(kSaverPage.KiwiSaver).contextClick();
 //		actions.moveToElement(kSaverPage.KiwiSaverCalculators).click();
 //		kSaverPage.KiwiSaverCalculatorsClick.click();
 //		actions.click().build().perform();
 //		kSaverPage.KiwiSaverCalculators.click();
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.visibilityOf(kSaverPage.kiwiSaverCalculatorSideMenu)).isDisplayed();
+		kSaverPage.kiwiSaverCalculatorSideMenu.click();
 	}
 
 	@And("^User clicks on Kiwisaver Start button$")
 	public void user_clicks_on_kiwisaver_start_button() throws Throwable {
 		KiwiSaverPage kSaverPage = new KiwiSaverPage(driver);
 		WebDriverWait wait = new WebDriverWait(driver,30);
-		kSaverPage.startKiwiSaverCalculator.click();
+		wait.until(ExpectedConditions.elementToBeClickable(kSaverPage.startKiwiSaverCalculator)).click();
 		wait.until(ExpectedConditions.visibilityOf(kSaverPage.kiwiSaverCalculatorHeader)).isDisplayed();
 
 	}
@@ -87,7 +91,10 @@ public class StepDefinitions {
 	@Then("^User is displayed with Information icon \"([^\"]*)\"$")
 	public void user_is_displayed_with_information_icon_something(String message) throws Throwable {
 		KiwiSaverPage kSaverPage = new KiwiSaverPage(driver);
-		kSaverPage.currentAgeHelp.click();
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.visibilityOf(kSaverPage.currentAgeField)).isDisplayed();
+		wait.until(ExpectedConditions.elementToBeClickable(kSaverPage.currentAgeHelp)).click();
+//		kSaverPage.currentAgeHelp.click();
 		Assert.assertEquals(message, kSaverPage.warningMessage.getText());
 
 	}

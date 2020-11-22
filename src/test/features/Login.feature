@@ -3,7 +3,7 @@ Feature: Kiwisaver Calculator
   @VerifyIcon @Web
   Scenario Outline: Information Icon for Kiwisaver Retirement Calculator
     Given The website URL for Kiwisaver Retirement Calculator
-#    When User navigates to the Kiwisaver Calculators
+    When User navigates to the Kiwisaver Calculators
     And User clicks on Kiwisaver Start button
     Then User is displayed with Information icon "<Message>"
 
